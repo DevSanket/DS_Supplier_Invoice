@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "DS_Supplier_App",
+    "slug": "DS_Supplier_App",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package":"com.github.sanketscode.DS_Supplier_App",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon1.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
