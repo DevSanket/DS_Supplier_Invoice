@@ -27,7 +27,7 @@ const CreateBill = () => {
   const [Total,setTotal] = useState('');
   const [ReceivedBalance,SetReceivedBalance] = useState('');
   const [PaymentType,setPaymentType] = useState('Credit');
-
+  const [RemaningBalance, setRemaningBalance] = useState('Paid');
   const [selectedPrinter, setSelectedPrinter] = React.useState();
 
   
@@ -40,7 +40,7 @@ const CreateBill = () => {
   }
 
   const printToFile = async () => {
-    let html = PdfCode(name,Address,Mobile_No,Quantity,Invoice,Product,Total,ReceivedBalance,PaymentType);
+    let html = PdfCode(name,Address,Mobile_No,Quantity,Invoice,Product,Total,ReceivedBalance,PaymentType,RemaningBalance);
     // On iOS/android prints the given html. On web prints the HTML from the current page.
     try{
       const { uri } = await Print.printToFileAsync({
@@ -163,6 +163,17 @@ const CreateBill = () => {
             onChangeText={(text) => SetReceivedBalance(text)}
             value={ReceivedBalance}
             placeholder="Received Amount ₹"
+          />
+        </View>
+        {/* Remaining Balance  */}
+        <View style={styles.InputContainer}>
+          <Text>Remaining Balance : </Text>
+          <TextInput
+            style={styles.textInput}
+            keyboardType="numeric"
+            onChangeText={(text) => setRemaningBalance(text)}
+            value={RemaningBalance}
+            placeholder="Remaining Balance ₹"
           />
         </View>
         {/* Payment Method  */}

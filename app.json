@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "DS_Supplier_App",
+    "name": "DS Supplier App",
     "slug": "DS_Supplier_App",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,7 +22,7 @@
     "android": {
       "package":"com.github.sanketscode.DS_Supplier_App",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon1.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },

@@ -1,17 +1,28 @@
 import dateFormat, { masks } from "dateformat";
 
 function GetTime(date) {
-  var hours = parseInt(dateFormat(date,"hh"));
-  var minutes = parseInt(dateFormat(date,"MM"));;
-  var ampm = hours >= 12 ? 'AM' : 'PM';
+  var hours = parseInt(dateFormat(date, "hh"));
+  var minutes = parseInt(dateFormat(date, "MM"));
+  var ampm = hours >= 12 ? "AM" : "PM";
   hours = hours % 12;
   hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0'+minutes : minutes;
-  var strTime = hours + ':' + minutes + ' ' + ampm;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  var strTime = hours + ":" + minutes + " " + ampm;
   return strTime;
 }
 
-const PdfCode = (name,Address,Mobile_No,Quantity,Invoice,Product,Total,ReceivedBalance,PaymentType) => `
+const PdfCode = (
+  name,
+  Address,
+  Mobile_No,
+  Quantity,
+  Invoice,
+  Product,
+  Total,
+  ReceivedBalance,
+  PaymentType,
+  RemainingBalance
+) => `
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
@@ -73,8 +84,8 @@ const PdfCode = (name,Address,Mobile_No,Quantity,Invoice,Product,Total,ReceivedB
             </div>
             <div style="align-items: flex-end;">
                 <p>Invoice No : ${Invoice}<br/>
-                Date : ${dateFormat(Date.now(),"dd-mm-yyyy")}<br/>
-                Time :${GetTime(new Date)}</p>
+                Date : ${dateFormat(Date.now(), "dd-mm-yyyy")}<br/>
+                Time :${GetTime(new Date())}</p>
                 <br/>
                 <br/>
                 <p>Mobile No :- <br/>
@@ -101,7 +112,9 @@ const PdfCode = (name,Address,Mobile_No,Quantity,Invoice,Product,Total,ReceivedB
                 <tr style="background-color: rgba(246, 221, 178, 0.8);">
                   <td style="text-align: center;height: 30px;">1</td>
                   <td style="text-align: center;height: 30px;">${Product}</td>
-                  <td style="text-align: center;height: 30px;">${parseInt(parseInt(Total)/parseInt(Quantity)).toFixed(2)}</td>
+                  <td style="text-align: center;height: 30px;">${parseInt(
+                    parseInt(Total) / parseInt(Quantity)
+                  ).toFixed(2)}</td>
                   <td style="text-align: center;height: 30px;">${Quantity}</td>
                   <td style="text-align: center;height: 30px;">₹ ${Total}</td>
                 </tr>
@@ -118,14 +131,19 @@ const PdfCode = (name,Address,Mobile_No,Quantity,Invoice,Product,Total,ReceivedB
               <div style="width:100%;align-self: flex-end; display: flex; flex-direction: row;">
                 <div style="width:40%"></div>
                   <table style="width: 50%; align-self: flex-end;">
+                  <tr>
+                  <th style="text-align: start;">Grand Total : </th>
+                  <td style="text-align: center;height: 30px;">₹ ${Total}</td>
+              </tr>
                         <tr style="border-bottom: solid ;">
                             <th style="text-align: start;">Received Balance : </th>
                             <td style="text-align: center;height: 30px;">₹ ${ReceivedBalance}</td>
                         </tr>
-                        <tr>
-                            <th style="text-align: start;">Grand Total : </th>
-                            <td style="text-align: center;height: 30px;">₹ ${Total}</td>
-                        </tr>
+                       
+                        <tr style="border-bottom: solid ;">
+                        <th style="text-align: start;">Remaining Balance : </th>
+                        <td style="text-align: center;height: 30px;">₹ ${RemainingBalance}</td>
+                    </tr>
                         <tr>
                             <th style="text-align: start;">Payment Method: </th>
                             <td style="text-align: center;height: 30px;">${PaymentType}</td>
