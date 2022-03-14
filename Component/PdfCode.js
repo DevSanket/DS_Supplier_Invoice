@@ -102,7 +102,7 @@ const PdfCode = (
         flex-direction: column;
         align-items: center;">
             <table style="width:100%; border-collapse: collapse;">
-                <tr style="background-color: rgba(238, 157, 17, 0.8); color: white;">
+                <tr style="background-color: rgba(255, 0, 62, 0.8); color: white;">
                   <th style="height: 30px;">Index</th>
                   <th style="height: 30px;">Product Name</th>
                   <th style="height: 30px;">Price(Per)</th>
@@ -112,8 +112,8 @@ const PdfCode = (
                 <tr style="background-color: rgba(246, 221, 178, 0.8);">
                   <td style="text-align: center;height: 30px;">1</td>
                   <td style="text-align: center;height: 30px;">${Product}</td>
-                  <td style="text-align: center;height: 30px;">${parseInt(
-                    parseInt(Total) / parseInt(Quantity)
+                  <td style="text-align: center;height: 30px;">${parseFloat(
+                    parseFloat(Total) / parseFloat(Quantity)
                   ).toFixed(2)}</td>
                   <td style="text-align: center;height: 30px;">${Quantity}</td>
                   <td style="text-align: center;height: 30px;">₹ ${Total}</td>
